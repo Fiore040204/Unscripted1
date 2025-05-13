@@ -1,26 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Osserva</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Osserva</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container" id="gallery"></div>
-  <script>
-    fetch('osserva.json')
-      .then(response => response.json())
-      .then(images => {
-        const container = document.getElementById('gallery');
-        images.forEach(filename => {
-          const img = document.createElement('img');
-          img.src = `osserva/${filename}`;
-          img.alt = filename;
-          container.appendChild(img);
-        });
-      });
-  </script>
+    <main id="image-list"></main>
+
+    <script>
+        fetch('osserva.json')
+            .then(response => response.json())
+            .then(images => {
+                const container = document.getElementById('image-list');
+                images.forEach(imgPath => {
+                    const img = document.createElement('img');
+                    img.src = imgPath;
+                    img.alt = imgPath;
+                    img.className = "single-image";
+                    container.appendChild(img);
+                });
+            });
+    </script>
 </body>
 </html>
