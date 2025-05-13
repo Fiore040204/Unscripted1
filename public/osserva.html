@@ -1,97 +1,27 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Osserva</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .image-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
-
-    .image-list img {
-      max-width: 100%;
-      height: auto;
-      max-height: 60vh;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .image-list img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Fullscreen Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      padding-top: 5vh;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.95);
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90vh;
-    }
-
-    .modal:target {
-      display: block;
-    }
-
-    .close {
-      position: absolute;
-      top: 1rem;
-      right: 2rem;
-      color: white;
-      font-size: 2rem;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="../index.html" id="menu-link">MENU</a>
-  <h1 class="section-title">Unscripted</h1>
-  <main class="image-list" id="imageList"></main>
-
-  <!-- Modal structure -->
-  <div id="modal" class="modal">
-    <a href="#" class="close">&times;</a>
-    <img class="modal-content" id="modalImg" />
-  </div>
+  <div id="image-container"></div>
 
   <script>
     fetch('osserva.json')
       .then(response => response.json())
       .then(images => {
-        const container = document.getElementById('imageList');
-        images.forEach(img => {
-          const image = document.createElement('img');
-          image.src = 'osserva/' + img;
-          image.alt = img;
-          image.onclick = () => {
-            const modalImg = document.getElementById('modalImg');
-            modalImg.src = image.src;
-            location.href = "#modal";
-          };
-          container.appendChild(image);
+        const container = document.getElementById('image-container');
+        images.forEach(name => {
+          const img = document.createElement('img');
+          img.src = `osserva/${name}`;
+          img.alt = name;
+          img.className = 'responsive-img';
+          container.appendChild(img);
         });
-      });
+      })
+      .catch(err => console.error('Errore nel caricamento delle immagini:', err));
   </script>
 </body>
 </html>
