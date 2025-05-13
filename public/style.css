@@ -168,3 +168,15 @@ body {
     transform: scale(1.1) translate(-2%, -2%);
   }
 }
+
+/* --- Ridimensionamento immagini per desktop --- */
+@media (min-width: 768px) {
+  #content-area img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+}
