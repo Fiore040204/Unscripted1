@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,18 +8,16 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="content-area" class="image-grid"></div>
-
+  <div class="container" id="gallery"></div>
   <script>
-    const jsonFile = "osserva.json";
-    fetch(jsonFile)
+    fetch('osserva.json')
       .then(response => response.json())
       .then(images => {
-        const container = document.getElementById("content-area");
-        images.forEach(image => {
-          const img = document.createElement("img");
-          img.src = image;
-          img.alt = "";
+        const container = document.getElementById('gallery');
+        images.forEach(filename => {
+          const img = document.createElement('img');
+          img.src = `osserva/${filename}`;
+          img.alt = filename;
           container.appendChild(img);
         });
       });
