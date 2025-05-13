@@ -5,22 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Osserva</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body { margin: 0; font-family: sans-serif; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    #content-area {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    header a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Barra superiore -->
-  <div class="menu-bar">
-    <span class="menu-link"><a href="index.html">MENU</a></span>
-    <span class="brand">Unscripted</span>
-  </div>
+  <header>
+    <a href="index.html">MENU</a>
+    <div>Unscripted</div>
+  </header>
 
-  <!-- Area immagini -->
-  <div id="content-area" class="image-grid"></div>
+  <div id="content-area"></div>
 
-  <!-- Caricamento immagini -->
   <script>
-    const jsonFile = "osserva.json";
-    fetch(jsonFile)
+    fetch("osserva.json")
       .then(response => response.json())
       .then(images => {
         const container = document.getElementById("content-area");
