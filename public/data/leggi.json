@@ -1,0 +1,9 @@
+{
+  "type": "books",
+  "items": [
+    "https://example.com/leggi/libro_1.jpg",
+    "https://example.com/leggi/libro_2.jpg",
+    "https://example.com/leggi/libro_3.jpg",
+    "https://example.com/leggi/libro_4.jpg"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "pdf",
+  "items": [
+    {
+      "title": "Progetto 1",
+      "url": "https://example.com/progetta/progetto_1.pdf"
+    },
+    {
+      "title": "Progetto 2",
+      "url": "https://example.com/progetta/progetto_2.pdf"
+    },
+    {
+      "title": "Progetto 3",
+      "url": "https://example.com/progetta/progetto_3.pdf"
+    }
+  ]
+}

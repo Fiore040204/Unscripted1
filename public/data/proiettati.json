@@ -1,0 +1,11 @@
+{
+  "type": "movies",
+  "items": [
+    "https://example.com/proiettati/film_1.jpg",
+    "https://example.com/proiettati/film_2.jpg",
+    "https://example.com/proiettati/film_3.jpg",
+    "https://example.com/proiettati/film_4.jpg",
+    "https://example.com/proiettati/film_5.jpg",
+    "https://example.com/proiettati/film_6.jpg"
+  ]
+}

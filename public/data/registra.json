@@ -1,0 +1,7 @@
+{
+  "type": "videos",
+  "items": [
+    "https://example.com/registra/video_1.mp4",
+    "https://example.com/registra/video_2.mp4"
+  ]
+}

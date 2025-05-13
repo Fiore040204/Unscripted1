@@ -1,0 +1,8 @@
+{
+  "type": "images-horizontal",
+  "items": [
+    "https://example.com/segna/segno_1.jpg",
+    "https://example.com/segna/segno_2.jpg",
+    "https://example.com/segna/segno_3.jpg"
+  ]
+}

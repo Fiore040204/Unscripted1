@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>ispirati</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pagina galleria-verticale" id="ispirati"><a href="index.html" class="torna">torna alla bacheca</a>
+</body>
+<script>
+fetch('ispirati.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('ispirati');
+    data.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      container.appendChild(img);
+    });
+  });
+</script>
+</html>
