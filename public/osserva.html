@@ -7,8 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Barra superiore -->
+  <div class="menu-bar">
+    <span class="menu-link"><a href="index.html">MENU</a></span>
+    <span class="brand">Unscripted</span>
+  </div>
+
+  <!-- Area immagini -->
   <div id="content-area" class="image-grid"></div>
 
+  <!-- Caricamento immagini -->
   <script>
     const jsonFile = "osserva.json";
     fetch(jsonFile)
@@ -23,5 +32,6 @@
         });
       });
   </script>
+
 </body>
 </html>
