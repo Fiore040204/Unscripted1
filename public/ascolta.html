@@ -53,17 +53,13 @@
   <div id="content-area"></div>
 
   <script>
-    async function fetchArtwork(itunesUrl) {
-      const idMatch = itunesUrl.match(/album\\/[^/]+\\/(\\d+)/);
-      if (!idMatch) return null;
-      const id = idMatch[1];
-
+    async function fetchArtworkById(id, url) {
       const response = await fetch(`https://itunes.apple.com/lookup?id=${id}`);
       const data = await response.json();
       if (data.results.length > 0) {
         return {
           artwork: data.results[0].artworkUrl100.replace("100x100bb", "600x600bb"),
-          link: itunesUrl
+          link: url
         };
       }
       return null;
@@ -74,7 +70,7 @@
       .then(async (tracks) => {
         const container = document.getElementById("content-area");
         for (const track of tracks) {
-          const result = await fetchArtwork(track.url);
+          const result = await fetchArtworkById(track.id, track.url);
           if (result) {
             const a = document.createElement("a");
             a.href = result.link;
