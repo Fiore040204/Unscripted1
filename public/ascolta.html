@@ -54,7 +54,7 @@
 
   <script>
     async function fetchArtwork(itunesUrl) {
-      const idMatch = itunesUrl.match(/i=(\\d+)/);
+      const idMatch = itunesUrl.match(/album\\/[^/]+\\/(\\d+)/);
       if (!idMatch) return null;
       const id = idMatch[1];
 
