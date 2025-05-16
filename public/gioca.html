@@ -114,7 +114,7 @@
           data.forEach((filename, index) => {
             const img = document.createElement("img");
             img.className = "draggable";
-            img.src = `public/gioca/${filename}`;
+            img.src = `gioca/${filename}`; // ✅ Corretto qui
             img.style.top = Math.random() * 500 + "px";
             img.style.left = Math.random() * 500 + "px";
             playground.appendChild(img);
