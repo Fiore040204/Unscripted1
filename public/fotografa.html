@@ -52,7 +52,7 @@
         const container = document.getElementById("content-area");
         images.forEach(image => {
           const img = document.createElement("img");
-          img.src = image.src || image; // supporta sia stringhe che oggetti
+          img.src = "fotografa/" + (image.src || image); // CORRETTO: aggiunto percorso cartella
           img.alt = "";
           container.appendChild(img);
         });
