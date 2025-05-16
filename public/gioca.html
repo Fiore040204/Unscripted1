@@ -79,12 +79,13 @@
     }
 
     .draggable {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       position: absolute;
       cursor: grab;
       user-select: none;
       touch-action: none;
+      object-fit: contain;
     }
 
     @media (min-width: 600px) {
@@ -168,15 +169,22 @@
       const playground = document.getElementById("playground");
       playground.style.display = "block";
 
+      const boxWidth = playground.clientWidth;
+      const boxHeight = playground.clientHeight;
+
       fetch("gioca.json")
         .then(response => response.json())
         .then(data => {
-          data.forEach((filename, index) => {
+          data.forEach((filename) => {
             const img = document.createElement("img");
             img.className = "draggable";
             img.src = `gioca/${filename}`;
-            img.style.top = Math.random() * 400 + "px";
-            img.style.left = Math.random() * 400 + "px";
+            img.onload = () => {
+              const imgWidth = img.offsetWidth;
+              const imgHeight = img.offsetHeight;
+              img.style.left = Math.random() * (boxWidth - imgWidth) + "px";
+              img.style.top = Math.random() * (boxHeight - imgHeight) + "px";
+            };
             playground.appendChild(img);
             dragElement(img);
           });
