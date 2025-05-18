@@ -1,5 +1,5 @@
 
-const mainMenu = ["Ispirati", "Realizza"];
+const mainMenu = ["Ispirati", "Realizza", "Contattami"];
 const subMenus = {
   "Ispirati": ["Ascolta", "Gioca", "Proiettati", "Leggi", "Osserva"],
   "Realizza": ["Fotografa", "Segna", "Registra", "Progetta"]
