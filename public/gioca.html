@@ -226,10 +226,10 @@
               const vx = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
               const vy = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
               animateElement(img, vx, vy, boxWidth, boxHeight);
+              dragElement(img, boxWidth, boxHeight);
             };
 
             playground.appendChild(img);
-            dragElement(img, boxWidth, boxHeight);
           });
         });
     });
