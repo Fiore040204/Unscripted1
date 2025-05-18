@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -116,7 +117,29 @@
   <div class="box-view" id="playground"></div>
 
   <script>
-    function dragElement(elmnt) {
+    function animateElement(elmnt, vx, vy, boxWidth, boxHeight) {
+      let x = parseFloat(elmnt.style.left);
+      let y = parseFloat(elmnt.style.top);
+      const imgWidth = elmnt.offsetWidth;
+      const imgHeight = elmnt.offsetHeight;
+
+      function move() {
+        x += vx;
+        y += vy;
+
+        if (x <= 0 || x + imgWidth >= boxWidth) vx = -vx;
+        if (y <= 0 || y + imgHeight >= boxHeight) vy = -vy;
+
+        elmnt.style.left = `${x}px`;
+        elmnt.style.top = `${y}px`;
+
+        requestAnimationFrame(move);
+      }
+
+      move();
+    }
+
+    function dragElement(elmnt, boxWidth, boxHeight) {
       let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
       const onMouseDown = (e) => {
@@ -140,8 +163,14 @@
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        let newTop = elmnt.offsetTop - pos2;
+        let newLeft = elmnt.offsetLeft - pos1;
+
+        newTop = Math.max(0, Math.min(newTop, boxHeight - elmnt.offsetHeight));
+        newLeft = Math.max(0, Math.min(newLeft, boxWidth - elmnt.offsetWidth));
+
+        elmnt.style.top = newTop + "px";
+        elmnt.style.left = newLeft + "px";
       }
 
       function elementTouchDrag(e) {
@@ -149,8 +178,14 @@
         pos2 = pos4 - e.touches[0].clientY;
         pos3 = e.touches[0].clientX;
         pos4 = e.touches[0].clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        let newTop = elmnt.offsetTop - pos2;
+        let newLeft = elmnt.offsetLeft - pos1;
+
+        newTop = Math.max(0, Math.min(newTop, boxHeight - elmnt.offsetHeight));
+        newLeft = Math.max(0, Math.min(newLeft, boxWidth - elmnt.offsetWidth));
+
+        elmnt.style.top = newTop + "px";
+        elmnt.style.left = newLeft + "px";
       }
 
       function closeDragElement() {
@@ -179,14 +214,22 @@
             const img = document.createElement("img");
             img.className = "draggable";
             img.src = `gioca/${filename}`;
+
             img.onload = () => {
               const imgWidth = img.offsetWidth;
               const imgHeight = img.offsetHeight;
-              img.style.left = Math.random() * (boxWidth - imgWidth) + "px";
-              img.style.top = Math.random() * (boxHeight - imgHeight) + "px";
+              const x = Math.random() * (boxWidth - imgWidth);
+              const y = Math.random() * (boxHeight - imgHeight);
+              img.style.left = `${x}px`;
+              img.style.top = `${y}px`;
+
+              const vx = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
+              const vy = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
+              animateElement(img, vx, vy, boxWidth, boxHeight);
             };
+
             playground.appendChild(img);
-            dragElement(img);
+            dragElement(img, boxWidth, boxHeight);
           });
         });
     });
