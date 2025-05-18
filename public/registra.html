@@ -2,67 +2,106 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registra</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body { margin: 0; font-family: sans-serif; }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        #content-area {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        header a { text-decoration: none; color: black; font-weight: bold; }
-        iframe { width: 100%; height: 500px; }
-        video { width: 100%; max-height: 400px; }
-        img { max-width: 100%; height: auto; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registra - Unscripted</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: white;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    header a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    #content-area {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 640px;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">MENU</a>
-        <div>Unscripted</div>
-    </header>
-    <div id="content-area"></div>
 
-    <script>
-        fetch("registra.json")
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById("content-area");
-                data.forEach(item => {
-                    const div = document.createElement("div");
-                    if (item.type === "image") {
-                        const img = document.createElement("img");
-                        img.src = item.src;
-                        img.alt = item.alt || "";
-                        div.appendChild(img);
-                    } else if (item.type === "video") {
-                        const video = document.createElement("video");
-                        video.src = item.src;
-                        video.controls = true;
-                        div.appendChild(video);
-                    } else if (item.type === "pdf") {
-                        const iframe = document.createElement("iframe");
-                        iframe.src = item.src;
-                        div.appendChild(iframe);
-                    }
-                    container.appendChild(div);
-                });
-            });
-    </script>
+  <header>
+    <a href="index.html">MENU</a>
+    <div>Unscripted</div>
+  </header>
+
+  <div id="content-area">
+
+    <iframe 
+      src="https://www.youtube.com/embed/vp5I1pfCFrg" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/cjBsU2lanNM" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/jmiGqVy7JaE" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/MIXDha4r8Qw" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/IVTFXrjRmpk" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/_LqqIRxTm9k" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/KpSRoSZfDmQ" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+    <iframe 
+      src="https://www.youtube.com/embed/IDpJce5nJIQ" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    
+  </div>
 </body>
 </html>
