@@ -1,4 +1,3 @@
-
 const mainMenu = ["Ispirati", "Realizza", "Contattami"];
 const subMenus = {
   "Ispirati": ["Ascolta", "Gioca", "Proiettati", "Leggi", "Osserva"],
@@ -38,7 +37,7 @@ function renderMenu() {
 
 function showLogo(name) {
   const fileName = name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").replace(/ /g, "") + ".png";
-  if (name === "Ispirati" || name === "Realizza") {
+  if (["Ispirati", "Realizza", "Contattami"].includes(name)) {
     description.innerHTML = "";
   } else {
     description.innerHTML = `<img src="loghi/${fileName}" class="logo-image kenburns" alt="${name}" />`;
@@ -130,4 +129,4 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-renderMenu(); 
+renderMenu();
