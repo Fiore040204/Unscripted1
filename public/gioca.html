@@ -117,29 +117,7 @@
   <div class="box-view" id="playground"></div>
 
   <script>
-    function animateElement(elmnt, vx, vy, boxWidth, boxHeight) {
-      let x = parseFloat(elmnt.style.left);
-      let y = parseFloat(elmnt.style.top);
-      const imgWidth = elmnt.offsetWidth;
-      const imgHeight = elmnt.offsetHeight;
-
-      function move() {
-        x += vx;
-        y += vy;
-
-        if (x <= 0 || x + imgWidth >= boxWidth) vx = -vx;
-        if (y <= 0 || y + imgHeight >= boxHeight) vy = -vy;
-
-        elmnt.style.left = `${x}px`;
-        elmnt.style.top = `${y}px`;
-
-        requestAnimationFrame(move);
-      }
-
-      move();
-    }
-
-    function dragElement(elmnt, boxWidth, boxHeight) {
+        function dragElement(elmnt, boxWidth, boxHeight) {
       let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
       const onMouseDown = (e) => {
@@ -221,12 +199,7 @@
               const x = Math.random() * (boxWidth - imgWidth);
               const y = Math.random() * (boxHeight - imgHeight);
               img.style.left = `${x}px`;
-              img.style.top = `${y}px`;
-
-              const vx = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
-              const vy = (Math.random() * 0.8 + 0.2) * (Math.random() < 0.5 ? -1 : 1);
-              animateElement(img, vx, vy, boxWidth, boxHeight);
-              dragElement(img, boxWidth, boxHeight);
+              img.style.top = `${y}px`;              dragElement(img, boxWidth, boxHeight);
             };
 
             playground.appendChild(img);
