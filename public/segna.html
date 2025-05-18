@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -39,6 +38,7 @@
       justify-content: center;
       align-items: center;
       scroll-snap-align: center;
+      position: relative;
     }
 
     .gallery-item img {
@@ -50,6 +50,21 @@
 
     .gallery-container::-webkit-scrollbar {
       display: none;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: rgba(0, 0, 0, 0.3);
+      animation: bounce 2s infinite;
+      user-select: none;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-10px); }
     }
   </style>
 </head>
@@ -66,13 +81,23 @@
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('gallery');
-        data.forEach(file => {
+        data.forEach((file, index) => {
           const div = document.createElement('div');
           div.className = 'gallery-item';
+
           const img = document.createElement('img');
           img.src = 'segna/' + file;
           img.alt = '';
+
           div.appendChild(img);
+
+          if (index === 0) {
+            const hint = document.createElement('div');
+            hint.className = 'scroll-hint';
+            hint.innerHTML = '⇠';
+            div.appendChild(hint);
+          }
+
           container.appendChild(div);
         });
       });
